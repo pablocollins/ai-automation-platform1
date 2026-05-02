@@ -6,8 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/health", (req, res) => {
-  res.json({ status: "ok", message: "API funcionando 🚀" });
-});
+const authRoutes = require("./routes/authRoutes");
+const workflowRoutes = require("./routes/workflowRoutes");
+
+app.use("/auth", authRoutes);
+app.use("/workflows", workflowRoutes);
 
 module.exports = app;
